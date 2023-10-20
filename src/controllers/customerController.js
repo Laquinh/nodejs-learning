@@ -1,6 +1,12 @@
 const controller = {};
 
+controller.manager = (req, res) => {
+    console.log("manager");
+    res.render('manager');
+}
+
 controller.list = (req, res) => {
+    console.log("list");
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM customer', (err, customers) => {
             if (err) {
@@ -66,6 +72,11 @@ controller.delete = (req, res) => {
             res.redirect('/');
         });
     });
+};
+
+controller.empty = (req, res) => {
+    console.log("empty");
+    res.send("empty");
 };
 
 module.exports = controller;
