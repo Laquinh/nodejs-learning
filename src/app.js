@@ -24,6 +24,7 @@ app.use(myConnection(mysql, {
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE
 }, 'single'));
+app.use(express.urlencoded({extended: false}));
 
 // routes
 app.use('/', customerRoutes);
