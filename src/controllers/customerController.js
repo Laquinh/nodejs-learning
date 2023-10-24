@@ -34,6 +34,7 @@ controller.save = (req, res) => {
 
 controller.edit = (req, res) => {
     console.log("edit");
+    alert("edit");
     const {id} = req.params;
     
     req.getConnection((err, conn) => {
@@ -41,10 +42,11 @@ controller.edit = (req, res) => {
             if (err) {
                 res.json(err);
             }
-            console.log(customer[0]);
+            /*console.log(customer[0]);
             res.render('customer_edit', {
                 data: customer[0]
-            });
+            });*/
+            window.parent.frames['editFrame'].url = '/edit/' + id;
         });
     });
 };
@@ -76,7 +78,7 @@ controller.delete = (req, res) => {
 
 controller.empty = (req, res) => {
     console.log("empty");
-    res.send("empty");
+    res.render('empty');
 };
 
 module.exports = controller;
